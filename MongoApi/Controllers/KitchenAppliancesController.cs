@@ -2,6 +2,7 @@
 using MongoApi.Dto;
 using MongoApi.Models;
 using MongoApi.Services;
+using MongoDB.Bson;
 
 namespace MongoApi.Controllers;
 
@@ -21,12 +22,11 @@ public class KitchenAppliancesController:ControllerBase
     {
         var kitchenAppliance = new KitchenAppliance()
         {
-            Id = new Guid().ToString(),
+            Id = ObjectId.GenerateNewId().ToString(),
             Manufacturer = kitchenApplianceDto.Manufacturer,
             Type = kitchenApplianceDto.Type,
             Cost = kitchenApplianceDto.Cost
         };
-        
         await _service.CreateNewKitchenApplianceAsync(kitchenAppliance);
         
         return Ok(kitchenAppliance);

@@ -6,6 +6,8 @@ namespace MongoApi.Models;
 
 public class KitchenAppliance
 {
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
     
     [BsonElement("Manufacturer")]
@@ -19,6 +21,4 @@ public class KitchenAppliance
     [BsonElement("Cost")]
     [JsonPropertyName("Cost")]
     public decimal Cost { get; set; }
-    
-   
 }
